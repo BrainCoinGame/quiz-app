@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #000000; /* Черный фон */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+  transition: color 0.3s ease-in-out, transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+a:hover {
+  color: #535bf2;
+  transform: scale(1.05);
+  text-shadow: 0 0 8px rgba(83, 91, 242, 0.7); /* Тень на тексте при наведении */
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000000; /* Черный фон */
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  text-align: center;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeIn 1s forwards, slideInUp 1s ease-out forwards; /* Плавное появление и подъем */
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out, transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Плавный переход */
+}
+
+/* Состояние при наведении на кнопку */
+button:hover {
+  border-color: #646cff;
+  background-color: #333;
+  transform: scale(1.05); /* Увеличение при наведении */
+  box-shadow: 0 4px 15px rgba(83, 91, 242, 0.4); /* Тень для кнопки */
+  background-image: radial-gradient(circle at 50%, rgba(83, 91, 242, 0.2), transparent); /* Внутреннее свечение */
+}
+
+/* Состояние при фокусе */
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(83, 91, 242, 0.7); /* Тень при фокусе */
+  background-color: #444; /* Темнее при фокусе */
+  background-image: radial-gradient(circle at 50%, rgba(83, 91, 242, 0.2), transparent); /* Внутреннее свечение */
+}
+
+/* Состояние для неактивной кнопки */
+button:disabled {
+  background-color: #888;
+  cursor: not-allowed;
+  box-shadow: none;
+  background-image: none;
+}
+
+/* Анимация плавного появления карточки с эффектом сдвига */
+.card {
+  padding: 2em;
+  opacity: 0;
+  animation: fadeIn 1s forwards, slideInUp 1s ease-out forwards; /* Плавное появление и сдвиг */
+}
+
+/* Убираем отступы и для #app */
+#app {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  opacity: 0;
+  animation: fadeIn 1.5s forwards, fadeInBg 1s ease-out forwards; /* Плавное появление всей страницы */
+}
+
+/* Анимация затемнения фона страницы */
+@keyframes fadeInBg {
+  0% {
+    background-color: #000000; /* Черный фон */
+  }
+  100% {
+    background-color: #242424;
+  }
+}
+
+/* Анимация плавного появления */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Анимация сдвига элементов вверх */
+@keyframes slideInUp {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    min-width: 100%;
+    min-height: 100vh;
+  }
+
+  #app {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  button {
+    padding: 0.5em 1em;
+    font-size: 0.9em;
+    margin-top: 1rem;
+  }
+
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #000000;
+    background-color: #000000; /* Черный фон для светлой темы */
+  }
+
+  a:hover {
+    color: #747bff;
+  }
+
+  button {
+    background-color: #f9f9f9;
+  }
+}
